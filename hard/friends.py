@@ -51,7 +51,6 @@ He does have friends of his own, though:
 Joel Burton <joel@joelburton.com>
 """
 
-
 class PersonNode(object):
     """A node in a graph representing a person.
 
@@ -126,6 +125,23 @@ class FriendGraph(object):
 
     def are_connected(self, name1, name2):
         """Is this name1 friends with name2?"""
+        def _are_connected(node, name2, seen):
+            if node.name == name2:
+                return True
+            seen.add(node)
+
+            for friend in node.adjacent:
+                if friend in seen:
+                    continue
+                if _are_connected(friend, name2, seen):
+                    return True
+
+            return False
+
+        return _are_connected(self.nodes[name1], name2, set())
+        
+
+
 
 
 if __name__ == '__main__':
