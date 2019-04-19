@@ -31,7 +31,7 @@ def primes(count):
     while count > 0 :
         if is_prime(num):
             primes.append(num)
-        count -=1
+            count -=1
         num += 1
     return primes
 
