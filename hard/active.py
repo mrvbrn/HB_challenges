@@ -58,12 +58,17 @@ def most_active(bio_data):
     start = 0
     end = 100
 
-    for year, num_activate in century:
+    for year, num_activate in enumerate(century):
         if num_activate > best:
             best = num_activate
             in_best = True
             start = year
-        elif num_activate < 
+        elif num_activate < best and in_best:
+            end = year - 1
+            in_best = False
+
+    return start + 1900, end + 1900
+
 
 if __name__ == '__main__':
     import doctest
