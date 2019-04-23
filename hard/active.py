@@ -51,8 +51,6 @@ def most_active(bio_data):
     century = [0] * 100
     for name, start, end in bio_data:
         for year in range(start, end+1):
-            century[year - 1900] += 1
-
     best = 0
     in_best = True
     start = 0
