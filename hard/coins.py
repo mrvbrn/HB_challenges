@@ -38,11 +38,21 @@ Let's make sure it works when we can spend over 10 pennies::
 
 
 def coins(num_coins):
-    """Find change from combinations of `num_coins` of dimes and pennies.
+    """Find change from combinations of `num_coins` of dimes and pennies."""
+    i = 0
+    nums = set()
 
-    This should return a set of the unique amounts of change possible.
-    # """
-    # if num_coins == 0:
+    while i <= num_coins:
+        num = i * 1 + (num_coins - i) * 10
+        nums.add(num)
+        i+=1
+
+
+    return nums
+
+    ###################################
+
+      # if num_coins == 0:
     #     return {0}
     # if num_coins == 1:
     #     return {1, 10}
@@ -59,11 +69,18 @@ def coins(num_coins):
     #     coins_list.append(lst3)
     # return coins_list[-1]
 
-    total = set()
-    for ndimes in range(num_coins+1):
-        npennies = num_coins - ndimes
-        total.add(ndimes* 10 + npennies * 1)
-    return total
+    ###################################
+
+    # total = set()
+    # for ndimes in range(num_coins+1):
+    #     npennies = num_coins - ndimes
+    #     total.add(ndimes* 10 + npennies * 1)
+    # return total
+
+
+
+
+    
 
 
 
