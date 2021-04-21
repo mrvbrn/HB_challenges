@@ -45,3 +45,19 @@ def combinationSum4(nums, target):
         memo[wanted] = result
         return result
     return dfs(target)
+
+
+# dp solution
+
+ def combinationSum4(nums, target):
+    dp = [1]+[0]*target
+    nums.sort()
+    for i in range(target+1):
+        for num in nums:
+            if num>i:
+                break
+            if i == num:
+                dp[i]+=1
+            if i>num:
+                dp[i]+=dp[i-num]
+    return dp[target]
